@@ -47,7 +47,21 @@ public class Login {
 //        System.out.println(pass);
 //        System.out.println(Login.getEncriptedPassword(pass));
 
-        System.out.println(Login.customerLogin("accio@gmail.com", "angad123"));
+        System.out.println(Login.registerUser("accio1@gmail.com", "rahul123", "Rahul", 77609));
+    }
+
+    public static String registerUser(String email, String password, String name, int mobile){
+        try{
+            DatabaseConnection dbCon = new DatabaseConnection();
+            String encryptedPassword = getEncryptedPassword(password);
+            String query = String.format("INSERT INTO customer(email,password,first_name,mobile) VALUES(\'%s\',\'%s\',\'%s\',\'%s\');",email,encryptedPassword,name,mobile);
+            System.out.println(query);
+            dbCon.executeQuery(query);
+            return  password;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "registration_failed";
     }
 
 

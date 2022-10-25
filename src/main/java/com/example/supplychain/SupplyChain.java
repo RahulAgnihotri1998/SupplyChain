@@ -80,7 +80,9 @@ public class SupplyChain extends Application {
                 String userEmail;
                 int productId;
                 userEmail = customerEmail;
+                System.out.println(customerEmail);
                 productId = productDetails.getProductId();
+                System.out.println(productId);
                 if(!userEmail.isBlank() && productId!=-1){
                     boolean status =  Order.orderProduct(productId,userEmail);
                     if(status){
